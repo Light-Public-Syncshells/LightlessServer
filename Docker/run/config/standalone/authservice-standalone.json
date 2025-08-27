@@ -1,0 +1,42 @@
+{
+    "ConnectionStrings": {
+        "DefaultConnection": "Host=/var/run/postgresql;Port=5432;Database=;Username=;Password=;Keepalive=15;Minimum Pool Size=10;Maximum Pool Size=50;No Reset On Close=true;Max Auto Prepare=50;Enlist=false"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Warning",
+            "Microsoft": "Warning",
+            "Microsoft.Hosting.Lifetime": "Information",
+            "LightlessSyncServices": "Information",
+            "LightlessSyncShared": "Information",
+            "System.IO": "Information"
+        },
+        "File": {
+            "BasePath": "logs",
+            "FileAccessMode": "KeepOpenAndAutoFlush",
+            "FileEncodingName": "utf-8",
+            "DateFormat": "yyyMMdd",
+            "MaxFileSize": 104857600,
+            "Files": [
+                {
+                    "Path": "<date:yyyy>/<date:MM>/<date:dd>/lightless-<date:HH>-<counter:0000>.log"
+                }
+            ]
+        }
+    },
+    "LightlessSync": {
+        "DbContextPoolSize": 512,
+        "ShardName": "AuthServices",
+        "MetricsPort": 6150,
+        "Jwt": "",
+        "RedisConnectionString": "redis:6379,password=",
+        "FailedAuthForTempBan": 5,
+        "UseGeoIP": false,
+        "GeoIPDbCityFile": ""
+    },
+    "AllowedHosts": "*",
+    "Kestrel": {
+    },
+    "IpRateLimiting": {},
+    "IPRateLimitPolicies": {}
+}

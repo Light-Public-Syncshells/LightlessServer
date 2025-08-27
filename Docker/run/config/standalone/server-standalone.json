@@ -1,0 +1,60 @@
+{
+    "ConnectionStrings": {
+        "DefaultConnection": "Host=/var/run/postgresql;Port=5432;Database=;Username=;Password=;Keepalive=15;Minimum Pool Size=10;Maximum Pool Size=50;No Reset On Close=true;Max Auto Prepare=50;Enlist=false"
+    },
+    "Logging": {
+        "LogLevel": {
+            "Default": "Warning",
+            "Microsoft": "Warning",
+            "Microsoft.Hosting.Lifetime": "Information",
+            "Microsoft.EntityFramework": "Warning",
+            "LightlessSyncServer": "Debug",
+            "LightlessSyncShared": "Debug",
+            "System.IO": "Information",
+            "LightlessSyncServer.Services.SystemInfoService": "Warning"
+        },
+        "File": {
+            "BasePath": "logs",
+            "FileAccessMode": "KeepOpenAndAutoFlush",
+            "FileEncodingName": "utf-8",
+            "DateFormat": "yyyMMdd",
+            "MaxFileSize": 104857600,
+            "Files": [
+                {
+                    "Path": "<date:yyyy>/<date:MM>/<date:dd>/lightless-<date:HH>-<counter:0000>.log"
+                }
+            ]
+        }
+    },
+    "LightlessSync": {
+        "DbContextPoolSize": 512,
+        "ShardName": "Main",
+        "MetricsPort": 6050,
+        "MainServerAddress": "",
+        "FailedAuthForTempBan": 5,
+        "TempBanDurationInMinutes": 5,
+        "Jwt": "",
+        "WhitelistedIps": [
+            ""
+        ],
+        "RedisConnectionString": "redis:6379,password=",
+        "CdnFullUrl": "http://localhost:6200",
+        "MaxExistingGroupsByUser": 12,
+        "MaxJoinedGroupsByUser": 20,
+        "MaxGroupUserCount": 100,
+        "PurgeUnusedAccounts": false,
+        "PurgeUnusedAccountsPeriodInDays": 14,
+        "ExpectedClientVersion": "0.9.0",
+        "XIVAPIKey": ""
+    },
+    "AllowedHosts": "*",
+    "Kestrel": {
+        "Endpoints": {
+            "Http": {
+                "Url": "http://+:6000"
+            }
+        }
+    },
+    "IpRateLimiting": {},
+    "IPRateLimitPolicies": {}
+}

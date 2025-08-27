@@ -1,0 +1,3 @@
+[submodule "LightlessAPI"]
+	path = LightlessAPI
+	url = https://github.com/Light-Public-Syncshells/LightlessAPI

@@ -1,0 +1,53 @@
+﻿namespace LightlessSyncShared.Metrics;
+
+public class MetricsAPI
+{
+    public const string CounterInitializedConnections = "lightless_initialized_connections";
+    public const string GaugeConnections = "lightless_connections";
+    public const string GaugeAuthorizedConnections = "lightless_authorized_connections";
+    public const string GaugeAvailableWorkerThreads = "lightless_available_threadpool";
+    public const string GaugeAvailableIOWorkerThreads = "lightless_available_threadpool_io";
+    public const string GaugeUsersRegistered = "lightless_users_registered";
+    public const string CounterUsersRegisteredDeleted = "lightless_users_registered_deleted";
+    public const string GaugePairs = "lightless_pairs";
+    public const string GaugePairsPaused = "lightless_pairs_paused";
+    public const string GaugeFilesTotal = "lightless_files";
+    public const string GaugeFilesTotalColdStorage = "lightless_files_cold";
+    public const string GaugeFilesTotalSize = "lightless_files_size";
+    public const string GaugeFilesTotalSizeColdStorage = "lightless_files_size_cold";
+    public const string GaugeFilesDownloadingFromCache = "lightless_files_downloading_from_cache";
+    public const string GaugeFilesTasksWaitingForDownloadFromCache = "lightless_files_waiting_for_dl";
+    public const string CounterUserPushData = "lightless_user_push";
+    public const string CounterUserPushDataTo = "lightless_user_push_to";
+    public const string CounterAuthenticationRequests = "lightless_auth_requests";
+    public const string CounterAuthenticationCacheHits = "lightless_auth_requests_cachehit";
+    public const string CounterAuthenticationFailures = "lightless_auth_requests_fail";
+    public const string CounterAuthenticationSuccesses = "lightless_auth_requests_success";
+    public const string GaugeAuthenticationCacheEntries = "lightless_auth_cache";
+    public const string GaugeGroups = "lightless_groups";
+    public const string GaugeGroupPairs = "lightless_groups_pairs";
+    public const string GaugeFilesUniquePastHour = "lightless_files_unique_past_hour";
+    public const string GaugeFilesUniquePastHourSize = "lightless_files_unique_past_hour_size";
+    public const string GaugeFilesUniquePastDay = "lightless_files_unique_past_day";
+    public const string GaugeFilesUniquePastDaySize = "lightless_files_unique_past_day_size";
+    public const string GaugeCurrentDownloads = "lightless_current_downloads";
+    public const string GaugeQueueFree = "lightless_download_queue_free";
+    public const string GaugeQueueActive = "lightless_download_queue_active";
+    public const string GaugeQueueInactive = "lightless_download_queue_inactive";
+    public const string GaugeDownloadQueue = "lightless_download_queue";
+    public const string GaugeDownloadQueueCancelled = "lightless_download_queue_cancelled";
+    public const string GaugeDownloadPriorityQueue = "lightless_download_priority_queue";
+    public const string GaugeDownloadPriorityQueueCancelled = "lightless_download_priority_queue_cancelled";
+    public const string CounterFileRequests = "lightless_files_requests";
+    public const string CounterFileRequestSize = "lightless_files_request_size";
+    public const string CounterUserPairCacheHit = "lightless_pairscache_hit";
+    public const string CounterUserPairCacheMiss = "lightless_pairscache_miss";
+    public const string GaugeUserPairCacheUsers = "lightless_pairscache_users";
+    public const string GaugeUserPairCacheEntries = "lightless_pairscache_entries";
+    public const string CounterUserPairCacheNewEntries = "lightless_pairscache_new_entries";
+    public const string CounterUserPairCacheUpdatedEntries = "lightless_pairscache_updated_entries";
+    public const string GaugeGposeLobbies = "lightless_gpose_lobbies";
+    public const string GaugeGposeLobbyUsers = "lightless_gpose_lobby_users";
+    public const string GaugeHubConcurrency = "lightless_free_concurrent_hub_calls";
+    public const string GaugeHubQueuedConcurrency = "lightless_free_concurrent_queued_hub_calls";
+}
