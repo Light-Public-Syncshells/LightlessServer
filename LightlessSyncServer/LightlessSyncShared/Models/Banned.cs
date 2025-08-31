@@ -8,6 +8,7 @@ public class Banned
     [MaxLength(100)]
     public string CharacterIdentification { get; set; }
     public string Reason { get; set; }
+    public string BannedUid { get; set; }
     [Timestamp]
     public byte[] Timestamp { get; set; }
 }

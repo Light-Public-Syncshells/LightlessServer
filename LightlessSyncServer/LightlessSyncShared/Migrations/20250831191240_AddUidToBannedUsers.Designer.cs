@@ -3,6 +3,7 @@ using System;
 using LightlessSyncShared.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace LightlessSyncServer.Migrations
 {
     [DbContext(typeof(LightlessDbContext))]
-    partial class LightlessDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250831191240_AddUidToBannedUsers")]
+    partial class AddUidToBannedUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,15 +71,15 @@ namespace LightlessSyncServer.Migrations
                         .HasColumnType("text")
                         .HasColumnName("reason");
 
-                    b.Property<string>("BannedUid")
-                        .HasColumnType("character varying(10)")
-                        .HasColumnName("banned_uid");
-
                     b.Property<byte[]>("Timestamp")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea")
                         .HasColumnName("timestamp");
+
+                    b.Property<string>("bannedUid")
+                        .HasColumnType("text")
+                        .HasColumnName("banned_uid");
 
                     b.HasKey("CharacterIdentification")
                         .HasName("pk_banned_users");

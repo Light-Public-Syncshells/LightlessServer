@@ -4,6 +4,9 @@ public class LightlessAuth
 {
     public const string OAuth = "/oauth";
     public const string Auth = "/auth";
+    public const string User = "/user";
+    public const string User_Unban_Discord = "unbanDiscord";
+    public const string User_Unban_Uid = "unbanUID";
     public const string Auth_CreateIdent = "createWithIdent";
     public const string Auth_RenewToken = "renewToken";
     public const string OAuth_GetUIDsBasedOnSecretKeys = "getUIDsViaSecretKey";

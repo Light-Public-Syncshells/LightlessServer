@@ -68,15 +68,15 @@ namespace LightlessSyncServer.Migrations
                         .HasColumnType("text")
                         .HasColumnName("reason");
 
-                    b.Property<string>("BannedUid")
-                        .HasColumnType("character varying(10)")
-                        .HasColumnName("banned_uid");
-
                     b.Property<byte[]>("Timestamp")
                         .IsConcurrencyToken()
                         .ValueGeneratedOnAddOrUpdate()
                         .HasColumnType("bytea")
                         .HasColumnName("timestamp");
+
+                    b.Property<string>("bannedUid")
+                        .HasColumnType("text")
+                        .HasColumnName("banned_uid");
 
                     b.HasKey("CharacterIdentification")
                         .HasName("pk_banned_users");

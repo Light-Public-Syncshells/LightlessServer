@@ -138,6 +138,86 @@ public class LightlessModule : InteractionModuleBase
         }
     }
 
+    [SlashCommand("unbanbydiscord", "ADMIN ONLY: Unban a user by their discord ID")]
+    public async Task UnbanByDiscord([Summary("discord_id", "Discord ID to unban")] ulong discordId)
+    {
+        _logger.LogInformation("SlashCommand:{userId}:{Method}:{params}",
+            Context.Interaction.User.Id, nameof(UnbanByDiscord),
+            string.Join(",", new[] { $"{nameof(discordId)}:{discordId}" }));
+        try
+        {
+            using HttpClient c = new HttpClient();
+            await c.PostAsJsonAsync(new Uri(_lightlessServicesConfiguration.GetValue<Uri>
+                (nameof(ServicesConfiguration.MainServerAddress)), "/user/unbanDiscord"), new { discordId })
+                .ConfigureAwait(false);
+            var discordChannelForMessages = _lightlessServicesConfiguration.GetValueOrDefault<ulong?>(nameof(ServicesConfiguration.DiscordChannelForMessages), null);
+            if (discordChannelForMessages != null)
+            {
+                var discordChannel = await Context.Guild.GetChannelAsync(discordChannelForMessages.Value).ConfigureAwait(false) as IMessageChannel;
+                if (discordChannel != null)
+                {
+                    var embedColor = Color.Blue;
+
+                    EmbedBuilder eb = new();
+                    eb.WithTitle("Unban Alert!");
+                    eb.WithColor(embedColor);
+                    eb.WithDescription(discordId +" has been unbanned");
+
+                    await discordChannel.SendMessageAsync(embed: eb.Build()).ConfigureAwait(false);
+                }
+            }
+
+            await RespondAsync("Message sent", ephemeral: true).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            EmbedBuilder eb = new();
+            eb.WithTitle("An error occured");
+            eb.WithDescription("Please report this: " + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace + Environment.NewLine);
+            await RespondAsync(embeds: new Embed[] { eb.Build() }, ephemeral: true).ConfigureAwait(false);
+        }
+    }
+
+    [SlashCommand("unbanbyuid", "ADMIN ONLY: Unban a user by their uid")]
+    public async Task UnbanByUID([Summary("uid", "uid to unban")] string uid)
+    {
+        _logger.LogInformation("SlashCommand:{userId}:{Method}:{params}",
+            Context.Interaction.User.Id, nameof(UnbanByUID),
+            string.Join(",", new[] { $"{nameof(uid)}:{uid}" }));
+        try
+        {
+            using HttpClient c = new HttpClient();
+            await c.PostAsJsonAsync(new Uri(_lightlessServicesConfiguration.GetValue<Uri>
+                (nameof(ServicesConfiguration.MainServerAddress)), "/user/unbanUID"), new { uid })
+                .ConfigureAwait(false);
+            var discordChannelForMessages = _lightlessServicesConfiguration.GetValueOrDefault<ulong?>(nameof(ServicesConfiguration.DiscordChannelForMessages), null);
+            if (discordChannelForMessages != null)
+            {
+                var discordChannel = await Context.Guild.GetChannelAsync(discordChannelForMessages.Value).ConfigureAwait(false) as IMessageChannel;
+                if (discordChannel != null)
+                {
+                    var embedColor = Color.Blue;
+
+                    EmbedBuilder eb = new();
+                    eb.WithTitle("Unban Alert!");
+                    eb.WithColor(embedColor);
+                    eb.WithDescription(uid + " has been unbanned");
+
+                    await discordChannel.SendMessageAsync(embed: eb.Build()).ConfigureAwait(false);
+                }
+            }
+
+            await RespondAsync("Message sent", ephemeral: true).ConfigureAwait(false);
+        }
+        catch (Exception ex)
+        {
+            EmbedBuilder eb = new();
+            eb.WithTitle("An error occured");
+            eb.WithDescription("Please report this: " + Environment.NewLine + ex.Message + Environment.NewLine + ex.StackTrace + Environment.NewLine);
+            await RespondAsync(embeds: new Embed[] { eb.Build() }, ephemeral: true).ConfigureAwait(false);
+        }
+    }
+
     public async Task<Embed> HandleUserAdd(string desiredUid, ulong discordUserId)
     {
         var embed = new EmbedBuilder();

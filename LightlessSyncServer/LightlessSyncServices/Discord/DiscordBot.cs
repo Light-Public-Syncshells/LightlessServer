@@ -7,7 +7,6 @@ using LightlessSyncShared.Models;
 using LightlessSyncShared.Services;
 using LightlessSyncShared.Utils.Configuration;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json.Linq;
 using StackExchange.Redis;
 
 namespace LightlessSyncServices.Discord;

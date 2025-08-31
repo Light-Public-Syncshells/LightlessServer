@@ -121,6 +121,7 @@ public abstract class AuthControllerBase : Controller
             {
                 CharacterIdentification = charaIdent,
                 Reason = "Autobanned CharacterIdent (" + uid + ")",
+                BannedUid = uid,
             });
         }
 
